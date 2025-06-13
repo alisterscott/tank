@@ -23,16 +23,13 @@ const FishTank: React.FC = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const tankWidth = Math.min(dimensions.width - 40, 1200);
-  const tankHeight = Math.min(dimensions.height - 120, 800);
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-cyan-900 via-blue-800 to-blue-900 flex items-center justify-center p-5">
-      <div className="relative">
+    <div className="fixed inset-0 bg-gradient-to-b from-cyan-900 via-blue-800 to-blue-900 flex items-center justify-center p-0 m-0">
+      <div className="relative w-full h-full">
         {/* Tank container */}
         <div
-          className="relative overflow-hidden rounded-2xl border-8 border-gray-300 shadow-2xl bg-gradient-to-b from-cyan-400 via-blue-500 to-blue-700"
-          style={{ width: tankWidth, height: tankHeight }}
+          className="relative overflow-hidden rounded-2xl shadow-2xl bg-gradient-to-b from-cyan-400 via-blue-500 to-blue-700 w-full h-full"
+          style={{ width: '100vw', height: '100vh' }}
         >
           {/* Water effect overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent pointer-events-none"></div>
@@ -64,8 +61,8 @@ const FishTank: React.FC = () => {
             <Fish
               key={i}
               id={i}
-              containerWidth={tankWidth}
-              containerHeight={tankHeight - 50} // Account for sea floor
+              containerWidth={dimensions.width}
+              containerHeight={dimensions.height - 50} // Account for sea floor
             />
           ))}
           
@@ -74,8 +71,8 @@ const FishTank: React.FC = () => {
             <Bubble
               key={i}
               id={i}
-              containerWidth={tankWidth}
-              containerHeight={tankHeight}
+              containerWidth={dimensions.width}
+              containerHeight={dimensions.height}
             />
           ))}
         </div>
