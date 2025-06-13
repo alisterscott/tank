@@ -28,7 +28,7 @@ const FishTank: React.FC = () => {
       <div className="relative w-full h-full">
         {/* Tank container */}
         <div
-          className="relative overflow-hidden rounded-2xl shadow-2xl bg-gradient-to-b from-cyan-400 via-blue-500 to-blue-700 w-full h-full"
+          className="relative overflow-hidden bg-gradient-to-b from-cyan-400 via-blue-500 to-blue-700 w-full h-full"
           style={{ width: '100vw', height: '100vh' }}
         >
           {/* Water effect overlay */}
@@ -39,7 +39,7 @@ const FishTank: React.FC = () => {
           <div className="absolute top-0 right-1/3 w-1 h-full bg-gradient-to-b from-white/15 to-transparent transform skew-x-12 pointer-events-none"></div>
           
           {/* Sea floor */}
-          <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-amber-800 to-amber-600 rounded-b-xl">
+          <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-amber-800 to-amber-600">
             <div className="absolute inset-0 bg-gradient-to-r from-amber-700/50 via-transparent to-amber-700/50"></div>
           </div>
           
@@ -75,11 +75,6 @@ const FishTank: React.FC = () => {
               containerHeight={dimensions.height}
             />
           ))}
-        </div>
-        
-        {/* Tank label */}
-        <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 text-center">
-          <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">Juiced Fish</h1>
         </div>
       </div>
     </div>
