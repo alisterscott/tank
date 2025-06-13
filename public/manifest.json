@@ -6,11 +6,11 @@
   "background_color": "#0c4a6e",
   "display": "standalone",
   "orientation": "any",
-  "scope": "/",
-  "start_url": "/",
+  "scope": "/tank/",
+  "start_url": "/tank/",
   "icons": [
     {
-      "src": "/fish-icon.svg",
+      "src": "/tank/fish-icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
