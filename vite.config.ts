@@ -13,17 +13,23 @@ export default defineConfig({
       },
       includeAssets: ["fish-icon.svg"],
       manifest: {
-        name: "Virtual Fish Tank",
-        short_name: "Aquarium",
-        description: "A beautiful animated fish tank progressive web app",
+        name: "Juiced Fish",
+        short_name: "Juiced Fish",
+        description:
+          "A progressive web app that simulates a fish tank with animated fish.",
         theme_color: "#0891b2",
         background_color: "#0c4a6e",
         display: "standalone",
         icons: [
           {
-            src: "fish-icon.svg",
+            src: "fish-icon-192.png",
+            sizes: "192x192",
+            type: "image/png",
+          },
+          {
+            src: "fish-icon-512.png",
             sizes: "512x512",
-            type: "image/svg+xml",
+            type: "image/png",
           },
         ],
       },
