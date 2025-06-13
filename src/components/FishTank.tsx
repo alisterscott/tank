@@ -45,10 +45,10 @@ const FishTank: React.FC = () => {
           
           {/* Decorative seaweed */}
           <div className="absolute bottom-0 left-8">
-            <div className="w-2 h-24 bg-gradient-to-t from-green-800 to-green-600 rounded-t-full transform origin-bottom animate-pulse"></div>
+            <div className="w-2 h-24 bg-gradient-to-t from-green-800 to-green-600 rounded-t-full transform origin-bottom"></div>
           </div>
           <div className="absolute bottom-0 right-12">
-            <div className="w-1.5 h-20 bg-gradient-to-t from-green-700 to-green-500 rounded-t-full transform origin-bottom animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <div className="w-1.5 h-20 bg-gradient-to-t from-green-700 to-green-500 rounded-t-full transform origin-bottom" style={{ animationDelay: '1s' }}></div>
           </div>
           
           {/* Rocks */}

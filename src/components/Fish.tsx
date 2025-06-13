@@ -15,54 +15,50 @@ interface Position {
 
 const Fish: React.FC<FishProps> = ({ id, containerWidth, containerHeight }) => {
   const [position, setPosition] = useState<Position>(() => ({
-    x: Math.random() * (containerWidth - 120), // Doubled from 60 to 120
-    y: Math.random() * (containerHeight - 80), // Doubled from 40 to 80
+    x: Math.random() * (containerWidth - 120),
+    y: Math.random() * (containerHeight - 80),
     dx: (Math.random() - 0.5) * 2,
     dy: (Math.random() - 0.5) * 2,
   }));
 
   // Generate random gradient colors for each fish
   const gradientColors = [
-    ['#ff6b6b', '#ee5a24'], // Red to orange
-    ['#4834d4', '#686de0'], // Purple to light purple
-    ['#00d2d3', '#01a3a4'], // Cyan to teal
-    ['#ff9ff3', '#f368e0'], // Pink to magenta
-    ['#feca57', '#ff9f43'], // Yellow to orange
-    ['#48dbfb', '#0abde3'], // Light blue to blue
-    ['#1dd1a1', '#10ac84'], // Green to dark green
-    ['#fd79a8', '#e84393'], // Light pink to pink
-    ['#fdcb6e', '#e17055'], // Light orange to orange
-    ['#6c5ce7', '#a29bfe'], // Purple to light purple
+    ['#ff6b6b', '#ee5a24'],
+    ['#4834d4', '#686de0'],
+    ['#00d2d3', '#01a3a4'],
+    ['#ff9ff3', '#f368e0'],
+    ['#feca57', '#ff9f43'],
+    ['#48dbfb', '#0abde3'],
+    ['#1dd1a1', '#10ac84'],
+    ['#fd79a8', '#e84393'],
+    ['#fdcb6e', '#e17055'],
+    ['#6c5ce7', '#a29bfe'],
   ];
 
   const fishGradient = gradientColors[id % gradientColors.length];
-  const fishSize = 0.8 + Math.random() * 0.4; // Random size between 0.8 and 1.2
+  // Generate a random size ONCE per fish, not on every render
+  const [fishSize] = useState(0.8 + Math.random() * 0.4); // Random size between 0.8 and 1.2
   const gradientId = `fishGradient-${id}`;
 
   useEffect(() => {
     const animate = () => {
       setPosition(prev => {
         let { x, y, dx, dy } = prev;
-        
-        // Move fish
         x += dx;
         y += dy;
-        
-        // Bounce off walls (updated boundaries for larger fish)
-        if (x <= 0 || x >= containerWidth - 120) { // Doubled from 60 to 120
+        // Bounce off walls
+        if (x <= 0 || x >= containerWidth - 120) {
           dx = -dx;
           x = Math.max(0, Math.min(containerWidth - 120, x));
         }
-        if (y <= 0 || y >= containerHeight - 80) { // Doubled from 40 to 80
+        if (y <= 0 || y >= containerHeight - 80) {
           dy = -dy;
           y = Math.max(0, Math.min(containerHeight - 80, y));
         }
-        
         // Random direction changes
         if (Math.random() < 0.01) {
           dx += (Math.random() - 0.5) * 0.5;
           dy += (Math.random() - 0.5) * 0.5;
-          
           // Limit speed
           const speed = Math.sqrt(dx * dx + dy * dy);
           if (speed > 3) {
@@ -70,11 +66,9 @@ const Fish: React.FC<FishProps> = ({ id, containerWidth, containerHeight }) => {
             dy = (dy / speed) * 3;
           }
         }
-        
         return { x, y, dx, dy };
       });
     };
-
     const interval = setInterval(animate, 50);
     return () => clearInterval(interval);
   }, [containerWidth, containerHeight]);
@@ -91,8 +85,8 @@ const Fish: React.FC<FishProps> = ({ id, containerWidth, containerHeight }) => {
       }}
     >
       <svg 
-        width="100" // Doubled from 50 to 100
-        height="100" // Doubled from 50 to 100
+        width="100"
+        height="100"
         viewBox="0 -0.5 25 25" 
         fill="none" 
         xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +98,6 @@ const Fish: React.FC<FishProps> = ({ id, containerWidth, containerHeight }) => {
             <stop offset="100%" stopColor={fishGradient[1]} />
           </linearGradient>
         </defs>
-        
         {/* Fish body */}
         <path 
           fillRule="evenodd" 
@@ -116,7 +109,6 @@ const Fish: React.FC<FishProps> = ({ id, containerWidth, containerHeight }) => {
           strokeLinecap="round" 
           strokeLinejoin="round"
         />
-        
         {/* Fish eye */}
         <path 
           fillRule="evenodd" 
@@ -128,7 +120,6 @@ const Fish: React.FC<FishProps> = ({ id, containerWidth, containerHeight }) => {
           strokeLinecap="round" 
           strokeLinejoin="round"
         />
-        
         {/* Eye pupil */}
         <circle 
           cx="15.5" 
@@ -136,7 +127,6 @@ const Fish: React.FC<FishProps> = ({ id, containerWidth, containerHeight }) => {
           r="0.3" 
           fill="black"
         />
-        
         {/* Eye highlight */}
         <circle 
           cx="15.7" 
