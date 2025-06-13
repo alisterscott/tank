@@ -23,13 +23,30 @@ const FishTank: React.FC = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  useEffect(() => {
+    const setVH = () => {
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    };
+    setVH();
+    window.addEventListener('resize', setVH);
+    return () => window.removeEventListener('resize', setVH);
+  }, []);
+
   return (
-    <div className="fixed inset-0 bg-gradient-to-b from-cyan-900 via-blue-800 to-blue-900 flex items-center justify-center p-0 m-0">
-      <div className="relative w-full h-full">
+    <div className="fixed inset-0 bg-gradient-to-b from-cyan-900 via-blue-800 to-blue-900 flex items-center justify-center p-0 m-0 fish-tank-fullscreen">
+      <div className="relative w-full h-full fish-tank-fullscreen">
         {/* Tank container */}
         <div
-          className="relative overflow-hidden bg-gradient-to-b from-cyan-400 via-blue-500 to-blue-700 w-full h-full"
-          style={{ width: '100vw', height: '100vh' }}
+          className="relative overflow-hidden bg-gradient-to-b from-cyan-400 via-blue-500 to-blue-700 w-full h-full fish-tank-fullscreen"
+          style={{
+            width: '100vw',
+            height: 'calc(var(--vh, 1vh) * 100)',
+            paddingTop: 'env(safe-area-inset-top)',
+            paddingBottom: 'env(safe-area-inset-bottom)',
+            paddingLeft: 'env(safe-area-inset-left)',
+            paddingRight: 'env(safe-area-inset-right)',
+            boxSizing: 'border-box',
+          }}
         >
           {/* Water effect overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent pointer-events-none"></div>
