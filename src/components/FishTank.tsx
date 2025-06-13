@@ -82,8 +82,7 @@ const FishTank: React.FC = () => {
         
         {/* Tank label */}
         <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 text-center">
-          <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">🐠 Virtual Aquarium</h1>
-          <p className="text-cyan-200 text-sm md:text-base">Watch the fish swim in their digital ocean</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">Juiced Fish</h1>
         </div>
       </div>
     </div>
